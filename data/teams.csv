@@ -1,0 +1,49 @@
+team,confederation,home_city,home_timezone,home_elevation_m,fifa_ranking
+Canada,CONCACAF,Ottawa,America/Toronto,70,30
+Mexico,CONCACAF,Mexico City,America/Mexico_City,2240,15
+United States,CONCACAF,Washington D.C.,America/New_York,30,14
+Curacao,CONCACAF,Willemstad,America/Curacao,30,82
+Haiti,CONCACAF,Port-au-Prince,America/Port-au-Prince,6,83
+Panama,CONCACAF,Panama City,America/Panama,2,34
+Argentina,CONMEBOL,Buenos Aires,America/Argentina/Buenos_Aires,25,2
+Brazil,CONMEBOL,Brasília,America/Sao_Paulo,1172,5
+Colombia,CONMEBOL,Bogotá,America/Bogota,2640,13
+Ecuador,CONMEBOL,Quito,America/Guayaquil,2850,23
+Paraguay,CONMEBOL,Asunción,America/Asuncion,120,41
+Uruguay,CONMEBOL,Montevideo,America/Montevideo,43,16
+Austria,UEFA,Vienna,Europe/Vienna,171,24
+Belgium,UEFA,Brussels,Europe/Brussels,13,8
+Bosnia and Herzegovina,UEFA,Sarajevo,Europe/Sarajevo,550,64
+Croatia,UEFA,Zagreb,Europe/Zagreb,158,10
+Czechia,UEFA,Prague,Europe/Prague,200,40
+England,UEFA,London,Europe/London,11,4
+France,UEFA,Paris,Europe/Paris,35,3
+Germany,UEFA,Berlin,Europe/Berlin,34,9
+Netherlands,UEFA,Amsterdam,Europe/Amsterdam,-2,7
+Norway,UEFA,Oslo,Europe/Oslo,23,29
+Portugal,UEFA,Lisbon,Europe/Lisbon,2,6
+Scotland,UEFA,Edinburgh,Europe/London,47,42
+Spain,UEFA,Madrid,Europe/Madrid,660,1
+Sweden,UEFA,Stockholm,Europe/Stockholm,28,38
+Switzerland,UEFA,Bern,Europe/Zurich,540,17
+Turkey,UEFA,Ankara,Europe/Istanbul,938,22
+Algeria,CAF,Algiers,Africa/Algiers,24,28
+Cape Verde,CAF,Praia,Atlantic/Cape_Verde,37,67
+DR Congo,CAF,Kinshasa,Africa/Kinshasa,240,46
+Ivory Coast,CAF,Abidjan,Africa/Abidjan,18,33
+Egypt,CAF,Cairo,Africa/Cairo,23,29
+Ghana,CAF,Accra,Africa/Accra,61,73
+Morocco,CAF,Rabat,Africa/Casablanca,75,11
+Senegal,CAF,Dakar,Africa/Dakar,22,19
+South Africa,CAF,Johannesburg,Africa/Johannesburg,1753,60
+Tunisia,CAF,Tunis,Africa/Tunis,4,45
+Australia,AFC,Sydney,Australia/Sydney,39,27
+Iran,AFC,Tehran,Asia/Tehran,1200,20
+Iraq,AFC,Baghdad,Asia/Baghdad,34,57
+Japan,AFC,Tokyo,Asia/Tokyo,40,18
+Jordan,AFC,Amman,Asia/Amman,1100,64
+South Korea,AFC,Seoul,Asia/Seoul,38,25
+Qatar,AFC,Doha,Asia/Qatar,10,56
+Saudi Arabia,AFC,Riyadh,Asia/Riyadh,612,61
+Uzbekistan,AFC,Tashkent,Asia/Tashkent,455,50
+New Zealand,OFC,Auckland,Pacific/Auckland,30,85

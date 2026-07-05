@@ -1,0 +1,145 @@
+team,match_id,match_number,date,venue_id,rest_days,travel_distance_km
+Algeria,M019,1,2026-06-16,arrowhead,,
+Algeria,M044,2,2026-06-22,levis,6.0,2398.8
+Algeria,M071,3,2026-06-27,arrowhead,5.0,2398.8
+Argentina,M019,1,2026-06-16,arrowhead,,
+Argentina,M041,2,2026-06-22,att_stadium,6.0,738.9
+Argentina,M072,3,2026-06-27,att_stadium,5.0,0.0
+Australia,M008,1,2026-06-13,bc_place,,
+Australia,M029,2,2026-06-19,lumen,6.0,195.6
+Australia,M060,3,2026-06-25,levis,6.0,1133.7
+Austria,M020,1,2026-06-16,levis,,
+Austria,M041,2,2026-06-22,att_stadium,6.0,2315.0
+Austria,M071,3,2026-06-27,arrowhead,5.0,738.9
+Belgium,M014,1,2026-06-15,lumen,,
+Belgium,M038,2,2026-06-21,sofi,6.0,1553.2
+Belgium,M066,3,2026-06-26,bc_place,5.0,1748.6
+Bosnia and Herzegovina,M003,1,2026-06-12,bmo,,
+Bosnia and Herzegovina,M026,2,2026-06-18,sofi,6.0,3504.4
+Bosnia and Herzegovina,M050,3,2026-06-24,lumen,6.0,1553.2
+Brazil,M006,1,2026-06-13,metlife,,
+Brazil,M031,2,2026-06-19,lincoln_financial,6.0,137.4
+Brazil,M051,3,2026-06-24,hard_rock,5.0,1620.2
+Canada,M003,1,2026-06-12,bmo,,
+Canada,M027,2,2026-06-18,bc_place,6.0,3356.8
+Canada,M049,3,2026-06-24,bc_place,6.0,0.0
+Cape Verde,M013,1,2026-06-15,mercedes_benz,,
+Cape Verde,M039,2,2026-06-21,hard_rock,6.0,955.1
+Cape Verde,M063,3,2026-06-26,nrg,5.0,1547.1
+Colombia,M024,1,2026-06-17,azteca,,
+Colombia,M048,2,2026-06-23,akron,6.0,476.0
+Colombia,M069,3,2026-06-27,hard_rock,4.0,2439.1
+Croatia,M022,1,2026-06-17,att_stadium,,
+Croatia,M047,2,2026-06-23,bmo,6.0,1955.3
+Croatia,M068,3,2026-06-27,lincoln_financial,4.0,544.4
+Curacao,M009,1,2026-06-14,nrg,,
+Curacao,M035,2,2026-06-20,arrowhead,6.0,1044.7
+Curacao,M055,3,2026-06-25,lincoln_financial,5.0,1657.4
+Czechia,M002,1,2026-06-11,akron,,
+Czechia,M025,2,2026-06-18,mercedes_benz,7.0,2373.1
+Czechia,M053,3,2026-06-24,azteca,6.0,2171.1
+DR Congo,M021,1,2026-06-17,nrg,,
+DR Congo,M048,2,2026-06-23,akron,6.0,1286.9
+DR Congo,M070,3,2026-06-27,mercedes_benz,4.0,2373.1
+Ecuador,M011,1,2026-06-14,lincoln_financial,,
+Ecuador,M035,2,2026-06-20,arrowhead,6.0,1657.4
+Ecuador,M056,3,2026-06-25,metlife,5.0,1747.3
+Egypt,M014,1,2026-06-15,lumen,,
+Egypt,M040,2,2026-06-21,bc_place,6.0,195.6
+Egypt,M065,3,2026-06-26,lumen,5.0,195.6
+England,M022,1,2026-06-17,att_stadium,,
+England,M046,2,2026-06-23,gillette,6.0,2493.5
+England,M067,3,2026-06-27,metlife,4.0,273.9
+France,M017,1,2026-06-16,metlife,,
+France,M042,2,2026-06-22,lincoln_financial,6.0,137.4
+France,M061,3,2026-06-26,gillette,4.0,408.1
+Germany,M009,1,2026-06-14,nrg,,
+Germany,M034,2,2026-06-20,bmo,6.0,2099.8
+Germany,M056,3,2026-06-25,metlife,5.0,540.2
+Ghana,M023,1,2026-06-17,bmo,,
+Ghana,M046,2,2026-06-23,gillette,6.0,686.1
+Ghana,M068,3,2026-06-27,lincoln_financial,4.0,408.1
+Haiti,M007,1,2026-06-13,gillette,,
+Haiti,M031,2,2026-06-19,lincoln_financial,6.0,408.1
+Haiti,M052,3,2026-06-24,mercedes_benz,5.0,1067.7
+Iran,M016,1,2026-06-15,sofi,,
+Iran,M038,2,2026-06-21,sofi,6.0,0.0
+Iran,M065,3,2026-06-26,lumen,5.0,1553.2
+Iraq,M018,1,2026-06-16,gillette,,
+Iraq,M042,2,2026-06-22,lincoln_financial,6.0,408.1
+Iraq,M062,3,2026-06-26,bmo,4.0,544.4
+Ivory Coast,M011,1,2026-06-14,lincoln_financial,,
+Ivory Coast,M034,2,2026-06-20,bmo,6.0,544.4
+Ivory Coast,M055,3,2026-06-25,lincoln_financial,5.0,544.4
+Japan,M010,1,2026-06-14,att_stadium,,
+Japan,M036,2,2026-06-20,bbva,6.0,844.3
+Japan,M057,3,2026-06-25,att_stadium,5.0,844.3
+Jordan,M020,1,2026-06-16,levis,,
+Jordan,M044,2,2026-06-22,levis,6.0,0.0
+Jordan,M072,3,2026-06-27,att_stadium,5.0,2315.0
+Mexico,M001,1,2026-06-11,azteca,,
+Mexico,M028,2,2026-06-18,akron,7.0,476.0
+Mexico,M053,3,2026-06-24,azteca,6.0,476.0
+Morocco,M006,1,2026-06-13,metlife,,
+Morocco,M030,2,2026-06-19,gillette,6.0,273.9
+Morocco,M052,3,2026-06-24,mercedes_benz,5.0,1475.7
+Netherlands,M010,1,2026-06-14,att_stadium,,
+Netherlands,M033,2,2026-06-20,nrg,6.0,376.3
+Netherlands,M058,3,2026-06-25,arrowhead,5.0,1044.7
+New Zealand,M016,1,2026-06-15,sofi,,
+New Zealand,M040,2,2026-06-21,bc_place,6.0,1748.6
+New Zealand,M066,3,2026-06-26,bc_place,5.0,0.0
+Norway,M018,1,2026-06-16,gillette,,
+Norway,M043,2,2026-06-22,metlife,6.0,273.9
+Norway,M061,3,2026-06-26,gillette,4.0,273.9
+Panama,M023,1,2026-06-17,bmo,,
+Panama,M047,2,2026-06-23,bmo,6.0,0.0
+Panama,M067,3,2026-06-27,metlife,4.0,540.2
+Paraguay,M004,1,2026-06-12,sofi,,
+Paraguay,M032,2,2026-06-19,levis,7.0,504.6
+Paraguay,M060,3,2026-06-25,levis,6.0,0.0
+Portugal,M021,1,2026-06-17,nrg,,
+Portugal,M045,2,2026-06-23,nrg,6.0,0.0
+Portugal,M069,3,2026-06-27,hard_rock,4.0,1547.1
+Qatar,M005,1,2026-06-13,levis,,
+Qatar,M027,2,2026-06-18,bc_place,5.0,1323.5
+Qatar,M050,3,2026-06-24,lumen,6.0,195.6
+Saudi Arabia,M015,1,2026-06-15,hard_rock,,
+Saudi Arabia,M037,2,2026-06-21,mercedes_benz,6.0,955.1
+Saudi Arabia,M063,3,2026-06-26,nrg,5.0,1134.7
+Scotland,M007,1,2026-06-13,gillette,,
+Scotland,M030,2,2026-06-19,gillette,6.0,0.0
+Scotland,M051,3,2026-06-24,hard_rock,5.0,1972.5
+Senegal,M017,1,2026-06-16,metlife,,
+Senegal,M043,2,2026-06-22,metlife,6.0,0.0
+Senegal,M062,3,2026-06-26,bmo,4.0,540.2
+South Africa,M001,1,2026-06-11,azteca,,
+South Africa,M025,2,2026-06-18,mercedes_benz,7.0,2171.1
+South Africa,M054,3,2026-06-24,bbva,6.0,1771.6
+South Korea,M002,1,2026-06-11,akron,,
+South Korea,M028,2,2026-06-18,akron,7.0,0.0
+South Korea,M054,3,2026-06-24,bbva,6.0,644.7
+Spain,M013,1,2026-06-15,mercedes_benz,,
+Spain,M037,2,2026-06-21,mercedes_benz,6.0,0.0
+Spain,M064,3,2026-06-26,akron,5.0,2373.1
+Sweden,M012,1,2026-06-14,bbva,,
+Sweden,M033,2,2026-06-20,nrg,6.0,652.5
+Sweden,M057,3,2026-06-25,att_stadium,5.0,376.3
+Switzerland,M005,1,2026-06-13,levis,,
+Switzerland,M026,2,2026-06-18,sofi,5.0,504.6
+Switzerland,M049,3,2026-06-24,bc_place,6.0,1748.6
+Tunisia,M012,1,2026-06-14,bbva,,
+Tunisia,M036,2,2026-06-20,bbva,6.0,0.0
+Tunisia,M058,3,2026-06-25,arrowhead,5.0,1582.1
+Turkey,M008,1,2026-06-13,bc_place,,
+Turkey,M032,2,2026-06-19,levis,6.0,1323.5
+Turkey,M059,3,2026-06-25,sofi,6.0,504.6
+United States,M004,1,2026-06-12,sofi,,
+United States,M029,2,2026-06-19,lumen,7.0,1553.2
+United States,M059,3,2026-06-25,sofi,6.0,1553.2
+Uruguay,M015,1,2026-06-15,hard_rock,,
+Uruguay,M039,2,2026-06-21,hard_rock,6.0,0.0
+Uruguay,M064,3,2026-06-26,akron,5.0,2439.1
+Uzbekistan,M024,1,2026-06-17,azteca,,
+Uzbekistan,M045,2,2026-06-23,nrg,6.0,1214.6
+Uzbekistan,M070,3,2026-06-27,mercedes_benz,4.0,1134.7

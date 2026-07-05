@@ -1,0 +1,73 @@
+match_id,group,matchday,date,kickoff_local,kickoff_utc,venue_id,venue_city,venue_name,team_home,team_away,stage
+M001,A,1,2026-06-11,13:00,19:00,azteca,Mexico City,Estadio Azteca,Mexico,South Africa,group
+M002,A,1,2026-06-11,20:00,02:00,akron,Zapopan (Guadalajara),Estadio Akron,South Korea,Czechia,group
+M003,B,1,2026-06-12,15:00,19:00,bmo,Toronto,BMO Field,Canada,Bosnia and Herzegovina,group
+M004,D,1,2026-06-12,18:00,01:00,sofi,Inglewood,SoFi Stadium,United States,Paraguay,group
+M005,B,1,2026-06-13,12:00,19:00,levis,Santa Clara,Levi's Stadium,Qatar,Switzerland,group
+M006,C,1,2026-06-13,18:00,22:00,metlife,East Rutherford,MetLife Stadium,Brazil,Morocco,group
+M007,C,1,2026-06-13,21:00,01:00,gillette,Foxborough,Gillette Stadium,Haiti,Scotland,group
+M008,D,1,2026-06-13,21:00,04:00,bc_place,Vancouver,BC Place,Australia,Turkey,group
+M009,E,1,2026-06-14,12:00,17:00,nrg,Houston,NRG Stadium,Germany,Curacao,group
+M010,F,1,2026-06-14,15:00,20:00,att_stadium,Arlington,AT&T Stadium,Netherlands,Japan,group
+M011,E,1,2026-06-14,19:00,23:00,lincoln_financial,Philadelphia,Lincoln Financial Field,Ivory Coast,Ecuador,group
+M012,F,1,2026-06-14,20:00,02:00,bbva,Guadalupe (Monterrey),Estadio BBVA,Sweden,Tunisia,group
+M013,H,1,2026-06-15,12:00,16:00,mercedes_benz,Atlanta,Mercedes-Benz Stadium,Spain,Cape Verde,group
+M014,G,1,2026-06-15,12:00,19:00,lumen,Seattle,Lumen Field,Belgium,Egypt,group
+M015,H,1,2026-06-15,18:00,22:00,hard_rock,Miami Gardens,Hard Rock Stadium,Saudi Arabia,Uruguay,group
+M016,G,1,2026-06-15,18:00,01:00,sofi,Inglewood,SoFi Stadium,Iran,New Zealand,group
+M017,I,1,2026-06-16,15:00,19:00,metlife,East Rutherford,MetLife Stadium,France,Senegal,group
+M018,I,1,2026-06-16,18:00,22:00,gillette,Foxborough,Gillette Stadium,Iraq,Norway,group
+M019,J,1,2026-06-16,20:00,01:00,arrowhead,Kansas City,Arrowhead Stadium,Argentina,Algeria,group
+M020,J,1,2026-06-16,21:00,04:00,levis,Santa Clara,Levi's Stadium,Austria,Jordan,group
+M021,K,1,2026-06-17,12:00,17:00,nrg,Houston,NRG Stadium,Portugal,DR Congo,group
+M022,L,1,2026-06-17,15:00,20:00,att_stadium,Arlington,AT&T Stadium,England,Croatia,group
+M023,L,1,2026-06-17,19:00,23:00,bmo,Toronto,BMO Field,Ghana,Panama,group
+M024,K,1,2026-06-17,20:00,02:00,azteca,Mexico City,Estadio Azteca,Uzbekistan,Colombia,group
+M025,A,2,2026-06-18,12:00,16:00,mercedes_benz,Atlanta,Mercedes-Benz Stadium,Czechia,South Africa,group
+M026,B,2,2026-06-18,12:00,19:00,sofi,Inglewood,SoFi Stadium,Switzerland,Bosnia and Herzegovina,group
+M027,B,2,2026-06-18,15:00,22:00,bc_place,Vancouver,BC Place,Canada,Qatar,group
+M028,A,2,2026-06-18,19:00,01:00,akron,Zapopan (Guadalajara),Estadio Akron,Mexico,South Korea,group
+M029,D,2,2026-06-19,12:00,19:00,lumen,Seattle,Lumen Field,United States,Australia,group
+M030,C,2,2026-06-19,18:00,22:00,gillette,Foxborough,Gillette Stadium,Scotland,Morocco,group
+M031,C,2,2026-06-19,20:30,00:30,lincoln_financial,Philadelphia,Lincoln Financial Field,Brazil,Haiti,group
+M032,D,2,2026-06-19,20:00,03:00,levis,Santa Clara,Levi's Stadium,Turkey,Paraguay,group
+M033,F,2,2026-06-20,12:00,17:00,nrg,Houston,NRG Stadium,Netherlands,Sweden,group
+M034,E,2,2026-06-20,16:00,20:00,bmo,Toronto,BMO Field,Germany,Ivory Coast,group
+M035,E,2,2026-06-20,19:00,00:00,arrowhead,Kansas City,Arrowhead Stadium,Ecuador,Curacao,group
+M036,F,2,2026-06-20,22:00,04:00,bbva,Guadalupe (Monterrey),Estadio BBVA,Tunisia,Japan,group
+M037,H,2,2026-06-21,12:00,16:00,mercedes_benz,Atlanta,Mercedes-Benz Stadium,Spain,Saudi Arabia,group
+M038,G,2,2026-06-21,12:00,19:00,sofi,Inglewood,SoFi Stadium,Belgium,Iran,group
+M039,H,2,2026-06-21,18:00,22:00,hard_rock,Miami Gardens,Hard Rock Stadium,Uruguay,Cape Verde,group
+M040,G,2,2026-06-21,18:00,01:00,bc_place,Vancouver,BC Place,New Zealand,Egypt,group
+M041,J,2,2026-06-22,12:00,17:00,att_stadium,Arlington,AT&T Stadium,Argentina,Austria,group
+M042,I,2,2026-06-22,17:00,21:00,lincoln_financial,Philadelphia,Lincoln Financial Field,France,Iraq,group
+M043,I,2,2026-06-22,20:00,00:00,metlife,East Rutherford,MetLife Stadium,Norway,Senegal,group
+M044,J,2,2026-06-22,20:00,03:00,levis,Santa Clara,Levi's Stadium,Jordan,Algeria,group
+M045,K,2,2026-06-23,12:00,17:00,nrg,Houston,NRG Stadium,Portugal,Uzbekistan,group
+M046,L,2,2026-06-23,16:00,20:00,gillette,Foxborough,Gillette Stadium,England,Ghana,group
+M047,L,2,2026-06-23,19:00,23:00,bmo,Toronto,BMO Field,Panama,Croatia,group
+M048,K,2,2026-06-23,20:00,02:00,akron,Zapopan (Guadalajara),Estadio Akron,Colombia,DR Congo,group
+M049,B,3,2026-06-24,12:00,19:00,bc_place,Vancouver,BC Place,Switzerland,Canada,group
+M050,B,3,2026-06-24,12:00,19:00,lumen,Seattle,Lumen Field,Bosnia and Herzegovina,Qatar,group
+M051,C,3,2026-06-24,18:00,22:00,hard_rock,Miami Gardens,Hard Rock Stadium,Scotland,Brazil,group
+M052,C,3,2026-06-24,18:00,22:00,mercedes_benz,Atlanta,Mercedes-Benz Stadium,Morocco,Haiti,group
+M053,A,3,2026-06-24,19:00,01:00,azteca,Mexico City,Estadio Azteca,Czechia,Mexico,group
+M054,A,3,2026-06-24,19:00,01:00,bbva,Guadalupe (Monterrey),Estadio BBVA,South Africa,South Korea,group
+M055,E,3,2026-06-25,16:00,20:00,lincoln_financial,Philadelphia,Lincoln Financial Field,Curacao,Ivory Coast,group
+M056,E,3,2026-06-25,16:00,20:00,metlife,East Rutherford,MetLife Stadium,Ecuador,Germany,group
+M057,F,3,2026-06-25,18:00,23:00,att_stadium,Arlington,AT&T Stadium,Japan,Sweden,group
+M058,F,3,2026-06-25,18:00,23:00,arrowhead,Kansas City,Arrowhead Stadium,Tunisia,Netherlands,group
+M059,D,3,2026-06-25,19:00,02:00,sofi,Inglewood,SoFi Stadium,Turkey,United States,group
+M060,D,3,2026-06-25,19:00,02:00,levis,Santa Clara,Levi's Stadium,Paraguay,Australia,group
+M061,I,3,2026-06-26,15:00,19:00,gillette,Foxborough,Gillette Stadium,Norway,France,group
+M062,I,3,2026-06-26,15:00,19:00,bmo,Toronto,BMO Field,Senegal,Iraq,group
+M063,H,3,2026-06-26,19:00,00:00,nrg,Houston,NRG Stadium,Cape Verde,Saudi Arabia,group
+M064,H,3,2026-06-26,18:00,00:00,akron,Zapopan (Guadalajara),Estadio Akron,Uruguay,Spain,group
+M065,G,3,2026-06-26,20:00,03:00,lumen,Seattle,Lumen Field,Egypt,Iran,group
+M066,G,3,2026-06-26,20:00,03:00,bc_place,Vancouver,BC Place,New Zealand,Belgium,group
+M067,L,3,2026-06-27,17:00,21:00,metlife,East Rutherford,MetLife Stadium,Panama,England,group
+M068,L,3,2026-06-27,17:00,21:00,lincoln_financial,Philadelphia,Lincoln Financial Field,Croatia,Ghana,group
+M069,K,3,2026-06-27,19:30,23:30,hard_rock,Miami Gardens,Hard Rock Stadium,Colombia,Portugal,group
+M070,K,3,2026-06-27,19:30,23:30,mercedes_benz,Atlanta,Mercedes-Benz Stadium,DR Congo,Uzbekistan,group
+M071,J,3,2026-06-27,21:00,02:00,arrowhead,Kansas City,Arrowhead Stadium,Algeria,Austria,group
+M072,J,3,2026-06-27,21:00,02:00,att_stadium,Arlington,AT&T Stadium,Jordan,Argentina,group

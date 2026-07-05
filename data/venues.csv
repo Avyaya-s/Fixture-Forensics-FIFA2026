@@ -1,0 +1,17 @@
+venue_id,name,city,country,capacity,roof_type,timezone,elevation_m,lat,lon
+azteca,Estadio Azteca,Mexico City,Mexico,80824,open,America/Mexico_City,2240,19.3029,-99.1505
+metlife,MetLife Stadium,East Rutherford,United States,80663,open,America/New_York,27,40.8135,-74.0744
+att_stadium,AT&T Stadium,Arlington,United States,70649,retractable,America/Chicago,184,32.7478,-97.0929
+sofi,SoFi Stadium,Inglewood,United States,70492,open,America/Los_Angeles,30,33.9530,-118.3390
+arrowhead,Arrowhead Stadium,Kansas City,United States,69045,open,America/Chicago,270,39.0489,-94.4839
+levis,Levi's Stadium,Santa Clara,United States,68827,open,America/Los_Angeles,22,37.4030,-121.9700
+nrg,NRG Stadium,Houston,United States,68777,retractable,America/Chicago,15,29.6847,-95.4108
+lincoln_financial,Lincoln Financial Field,Philadelphia,United States,68324,open,America/New_York,12,39.9008,-75.1675
+mercedes_benz,Mercedes-Benz Stadium,Atlanta,United States,68239,retractable,America/New_York,320,33.7556,-84.4000
+lumen,Lumen Field,Seattle,United States,66925,open,America/Los_Angeles,20,47.5952,-122.3316
+hard_rock,Hard Rock Stadium,Miami Gardens,United States,64478,open,America/New_York,3,25.9581,-80.2389
+gillette,Gillette Stadium,Foxborough,United States,64146,open,America/New_York,82,42.0910,-71.2643
+bc_place,BC Place,Vancouver,Canada,52497,retractable,America/Vancouver,2,49.2767,-123.1119
+bbva,Estadio BBVA,Guadalupe,Mexico,51243,open,America/Monterrey,535,25.6692,-100.2444
+akron,Estadio Akron,Zapopan,Mexico,45664,open,America/Mexico_City,1566,20.6817,-103.4628
+bmo,BMO Field,Toronto,Canada,43036,open,America/Toronto,76,43.6333,-79.4186
