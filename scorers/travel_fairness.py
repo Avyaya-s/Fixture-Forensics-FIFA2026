@@ -1,20 +1,38 @@
 """Travel fairness scorer.
 
-Grounded in: established minimum rest-day norms used across professional
-football scheduling (major tournaments generally target 5-6 days between a
-team's matches; gaps below that are treated as an increasing burden).
+Grounded in the FIFA/FIFPro jointly-agreed minimum: a 72-hour (3-day) rest
+interval between matches, based on research that ~72 hours is what's needed
+to normalize muscle damage/inflammation, replenish glycogen stores, and
+achieve full neuromuscular recovery. Falling below that floor is a welfare
+concern in its own right, independent of whether the opponent is equally
+short-rested -- so this scorer penalizes two distinct things:
 
-We score the *asymmetry* between the two teams' rest days and travel
-distance since their previous group match, not the absolute values -- a
-match where both teams are equally rested/traveled is fair even if both
-had a short turnaround.
+  1. Asymmetry: the *gap* between the two teams' rest days and travel
+     distance since their previous group match. A match where both teams are
+     equally rested/traveled is fair even if both had a short turnaround --
+     this part is about fairness between these two specific teams.
+  2. Floor violation: either team resting below the 72-hour/3-day standard,
+     regardless of symmetry -- this part is about player welfare on its own
+     terms, since FIFA and FIFPro agreed to it as a floor, not a comparison.
 
-Scale: "goodness" (0-10, higher = fairer / more symmetric).
+Travel distance (km) has no equivalent published threshold -- it's kept as a
+secondary, distance-based fatigue signal. Circadian/jet-lag effects from
+crossing time zones are a related but distinct concern, tracked separately.
+
+Scale: "goodness" (0-10, higher = fairer / more symmetric / less floor
+violation).
 """
 from scorers.data_loader import get_match, get_team_sequence_row
 
-REST_GAP_WEIGHT = 1.5   # points of penalty per day of rest-day asymmetry
+FIFA_FIFPRO_MIN_REST_DAYS = 3.0  # the jointly-agreed 72-hour minimum
+BELOW_FLOOR_PENALTY_PER_DAY = 2.5  # penalty per day short of the 72h floor -- a standards violation
+ASYMMETRY_PENALTY_PER_DAY = 1.0  # penalty per day of rest-day gap between two floor-compliant teams
 TRAVEL_GAP_KM_PER_POINT = 500  # km of travel-distance asymmetry per penalty point
+
+
+def _below_floor_penalty(rest_days: float) -> float:
+    shortfall = max(0.0, FIFA_FIFPRO_MIN_REST_DAYS - rest_days)
+    return shortfall * BELOW_FLOOR_PENALTY_PER_DAY
 
 
 def score_travel_fairness(match_id: str) -> dict:
@@ -48,14 +66,15 @@ def score_travel_fairness(match_id: str) -> dict:
     rest_gap = abs(seq_home["rest_days"] - seq_away["rest_days"])
     travel_gap = abs(seq_home["travel_distance_km"] - seq_away["travel_distance_km"])
 
-    penalty = rest_gap * REST_GAP_WEIGHT + travel_gap / TRAVEL_GAP_KM_PER_POINT
-    score = round(max(0.0, 10.0 - penalty), 1)
+    asymmetry_penalty = rest_gap * ASYMMETRY_PENALTY_PER_DAY + travel_gap / TRAVEL_GAP_KM_PER_POINT
+    floor_penalty = max(_below_floor_penalty(seq_home["rest_days"]), _below_floor_penalty(seq_away["rest_days"]))
+    score = round(max(0.0, 10.0 - asymmetry_penalty - floor_penalty), 1)
 
     # Net advantage to home = home's rest edge + home's travel edge, on the
-    # same weighted scale as the penalty above, so "who's disadvantaged"
-    # reflects both factors together rather than rest days alone.
+    # same weighted scale as the asymmetry penalty above, so "who's
+    # disadvantaged" reflects both factors together rather than rest days alone.
     net_home_advantage = (
-        (seq_home["rest_days"] - seq_away["rest_days"]) * REST_GAP_WEIGHT
+        (seq_home["rest_days"] - seq_away["rest_days"]) * ASYMMETRY_PENALTY_PER_DAY
         + (seq_away["travel_distance_km"] - seq_home["travel_distance_km"]) / TRAVEL_GAP_KM_PER_POINT
     )
     disadvantaged = away if net_home_advantage > 0 else home
@@ -68,6 +87,15 @@ def score_travel_fairness(match_id: str) -> dict:
         if rest_gap > 0 or travel_gap > 0
         else f"{home} and {away} had identical rest and travel since their previous match -- fully symmetric."
     )
+    if floor_penalty > 0:
+        below_floor_team = (
+            home if seq_home["rest_days"] < seq_away["rest_days"] else away
+        )
+        below_floor_days = min(seq_home["rest_days"], seq_away["rest_days"])
+        reasoning += (
+            f" {below_floor_team} has only {below_floor_days:.0f} rest days, below the FIFA/FIFPro "
+            f"agreed minimum of {FIFA_FIFPRO_MIN_REST_DAYS:.0f} (72 hours)."
+        )
 
     return {
         "match_id": match_id,
@@ -83,5 +111,6 @@ def score_travel_fairness(match_id: str) -> dict:
             "away_travel_km": seq_away["travel_distance_km"],
             "rest_gap_days": rest_gap,
             "travel_gap_km": round(travel_gap, 1),
+            "below_72h_floor": floor_penalty > 0,
         },
     }

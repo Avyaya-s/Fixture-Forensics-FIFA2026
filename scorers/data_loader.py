@@ -42,6 +42,17 @@ def load_climate() -> pd.DataFrame:
     return pd.read_csv(path)
 
 
+@lru_cache
+def load_air_quality() -> pd.DataFrame:
+    path = DATA_DIR / "air_quality.csv"
+    if not path.exists():
+        raise FileNotFoundError(
+            "air_quality.csv has not been built yet (pending Open-Meteo fetch step); "
+            "score_air_quality is not usable until it exists."
+        )
+    return pd.read_csv(path)
+
+
 def get_match(match_id: str) -> pd.Series:
     matches = load_matches()
     row = matches[matches["match_id"] == match_id]
@@ -67,3 +78,15 @@ def get_team_sequence_row(team: str, match_id: str) -> pd.Series:
     if row.empty:
         raise ValueError(f"No team_match_sequence row for {team!r} / {match_id!r}")
     return row.iloc[0]
+
+
+def get_previous_match_row(team: str, match_id: str):
+    """team's team_match_sequence row for the group match immediately before
+    match_id -- or None if match_id is that team's tournament opener.
+    """
+    row = get_team_sequence_row(team, match_id)
+    if row["match_number"] == 1:
+        return None
+    seq = load_team_match_sequence()
+    prev = seq[(seq["team"] == team) & (seq["match_number"] == row["match_number"] - 1)]
+    return prev.iloc[0]

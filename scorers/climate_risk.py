@@ -1,19 +1,26 @@
 """Climate risk scorer.
 
-Grounded in: FIFA's own stated venue-analysis criteria (temperature, cooling
-infrastructure) plus established heat-safety practice in football (bands
-informed by FIFA/FIFPro heat-policy guidance on when cooling breaks are
-required). Roof type adjusts the effective risk down, since closed/retractable
+Grounded in published FIFA and FIFPro heat-safety policy, both stated in
+WBGT (Wet Bulb Globe Temperature), not air temperature alone:
+  - FIFA: voluntary cooling breaks from 27C WBGT; mandatory 3-minute cooling
+    breaks at 32C WBGT and above.
+  - FIFPro (more conservative): cooling breaks from 26C WBGT; postponement or
+    suspension considered from 28C WBGT. FIFA and FIFPro have not reconciled
+    these two thresholds as of 2026.
+Roof type then adjusts the effective risk down, since closed/retractable
 roofs are assumed to be used with climate control for hot-weather fixtures.
 
-NOTE ON SCALE: unlike the other four scorers, this one reports on a *risk*
-scale (0-10, higher = worse/riskier), because "risk" is the more intuitive
-framing for climate. When combining into the composite, the aggregator must
-invert it (contribution = 10 - risk_score) to put it on the same
-higher-is-better "goodness" scale as the other four scorers.
+WBGT is approximated from temp_c + humidity_pct via the Australian Bureau of
+Meteorology's simplified "WBGT (shade)" formula. This is a documented
+simplification: it omits the solar-radiation/globe-temperature term (Open-
+Meteo's hourly archive doesn't provide shortwave radiation), so it reads
+lower than the true on-pitch WBGT a player in direct sun would experience.
 
-Depends on climate.csv (temp_c, humidity_pct per match), which is not yet
-built -- this module is ready but not runnable until that data lands.
+NOTE ON SCALE: unlike the other scorers, this one reports on a *risk* scale
+(0-10, higher = worse/riskier), because "risk" is the more intuitive framing
+for climate. The aggregator (scorers/aggregate.py) inverts it
+(goodness = 10 - risk_score) before combining with the other "goodness"
+scorers.
 """
 from scorers.data_loader import get_match, get_venue, load_climate
 
@@ -23,24 +30,49 @@ ROOF_RISK_MULTIPLIER = {
     "fixed_closed": 0.15,
 }
 
+# Published WBGT thresholds this scorer's bands are anchored to.
+FIFPRO_COOLING_BREAK_C = 26.0
+FIFA_VOLUNTARY_COOLING_BREAK_C = 27.0
+FIFPRO_POSTPONEMENT_CONSIDERATION_C = 28.0
+FIFA_MANDATORY_COOLING_BREAK_C = 32.0
 
-def _heat_index_c(temp_c: float, humidity_pct: float) -> float:
-    # Simplified combined heat measure: humidity impairs evaporative cooling,
-    # so it's added as a fraction of temperature rather than using a full
-    # meteorological heat-index formula. Documented simplification.
-    return temp_c + 0.05 * humidity_pct
+
+def _vapor_pressure_hpa(temp_c: float, humidity_pct: float) -> float:
+    """Actual water vapor pressure (hPa) via the Tetens saturation-vapor-pressure formula."""
+    saturation_hpa = 6.1078 * 10 ** (7.5 * temp_c / (237.3 + temp_c))
+    return saturation_hpa * (humidity_pct / 100)
 
 
-def _risk_band(heat_index: float) -> float:
-    if heat_index < 24:
-        return 1.0 + (heat_index / 24) * 2.0       # 1-3
-    if heat_index < 27:
-        return 3.0 + (heat_index - 24) / 3 * 2.0    # 3-5
-    if heat_index < 30:
-        return 5.0 + (heat_index - 27) / 3 * 2.0    # 5-7
-    if heat_index < 33:
-        return 7.0 + (heat_index - 30) / 3 * 2.0    # 7-9
-    return min(10.0, 9.0 + (heat_index - 33) / 5)   # 9-10
+def _wbgt_c(temp_c: float, humidity_pct: float) -> float:
+    """Approximate WBGT in shade (Australian Bureau of Meteorology formula):
+    WBGT = 0.567*Ta + 0.393*e + 3.94, where e is vapor pressure in hPa.
+    """
+    e = _vapor_pressure_hpa(temp_c, humidity_pct)
+    return 0.567 * temp_c + 0.393 * e + 3.94
+
+
+def _risk_band(wbgt: float) -> float:
+    if wbgt < FIFPRO_COOLING_BREAK_C:
+        return max(0.0, (wbgt / FIFPRO_COOLING_BREAK_C) * 3.0)  # 0-3: below any published threshold
+    if wbgt < FIFA_VOLUNTARY_COOLING_BREAK_C:
+        return 3.0 + (wbgt - FIFPRO_COOLING_BREAK_C) * 1.0  # 3-4: FIFPro cooling-break zone
+    if wbgt < FIFPRO_POSTPONEMENT_CONSIDERATION_C:
+        return 4.0 + (wbgt - FIFA_VOLUNTARY_COOLING_BREAK_C) * 1.0  # 4-5: FIFA voluntary cooling-break zone
+    if wbgt < FIFA_MANDATORY_COOLING_BREAK_C:
+        return 5.0 + (wbgt - FIFPRO_POSTPONEMENT_CONSIDERATION_C) / 4 * 3.0  # 5-8: FIFPro postponement zone
+    return min(10.0, 8.0 + (wbgt - FIFA_MANDATORY_COOLING_BREAK_C) / 5 * 2.0)  # 8-10: FIFA mandatory zone
+
+
+def _threshold_note(wbgt: float) -> str:
+    if wbgt >= FIFA_MANDATORY_COOLING_BREAK_C:
+        return f"exceeds FIFA's mandatory cooling-break threshold ({FIFA_MANDATORY_COOLING_BREAK_C:.0f}°C WBGT)"
+    if wbgt >= FIFPRO_POSTPONEMENT_CONSIDERATION_C:
+        return f"in FIFPro's postponement-consideration zone (>={FIFPRO_POSTPONEMENT_CONSIDERATION_C:.0f}°C WBGT)"
+    if wbgt >= FIFA_VOLUNTARY_COOLING_BREAK_C:
+        return f"crosses FIFA's voluntary cooling-break threshold ({FIFA_VOLUNTARY_COOLING_BREAK_C:.0f}°C WBGT)"
+    if wbgt >= FIFPRO_COOLING_BREAK_C:
+        return f"crosses FIFPro's cooling-break threshold ({FIFPRO_COOLING_BREAK_C:.0f}°C WBGT)"
+    return "below all published cooling-break thresholds"
 
 
 def score_climate_risk(match_id: str) -> dict:
@@ -52,8 +84,8 @@ def score_climate_risk(match_id: str) -> dict:
         raise ValueError(f"No climate.csv row for match_id: {match_id!r}")
     row = row.iloc[0]
 
-    heat_index = _heat_index_c(row["temp_c"], row["humidity_pct"])
-    raw_risk = _risk_band(heat_index)
+    wbgt = _wbgt_c(row["temp_c"], row["humidity_pct"])
+    raw_risk = _risk_band(wbgt)
     multiplier = ROOF_RISK_MULTIPLIER.get(venue["roof_type"], 1.0)
     risk_score = round(raw_risk * multiplier, 1)
 
@@ -68,8 +100,9 @@ def score_climate_risk(match_id: str) -> dict:
         if multiplier < 1.0 else ""
     )
     reasoning = (
-        f"{band} risk ({risk_score}/10) -- {row['temp_c']:.0f}°C, {row['humidity_pct']:.0f}% humidity "
-        f"at kickoff ({row['data_type']}){roof_note}."
+        f"{band} risk ({risk_score}/10) -- {wbgt:.1f}°C WBGT ({row['temp_c']:.0f}°C air, "
+        f"{row['humidity_pct']:.0f}% humidity) at kickoff ({row['data_type']}), {_threshold_note(wbgt)}"
+        f"{roof_note}."
     )
 
     return {
@@ -82,7 +115,7 @@ def score_climate_risk(match_id: str) -> dict:
         "details": {
             "temp_c": row["temp_c"],
             "humidity_pct": row["humidity_pct"],
-            "heat_index_c": round(heat_index, 1),
+            "wbgt_c": round(wbgt, 1),
             "roof_type": venue["roof_type"],
             "data_type": row["data_type"],
         },

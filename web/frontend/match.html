@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Match Detail — Fixture Forensics</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page">
+    <header class="top">
+      <h1>🔍 Match Detail</h1>
+      <nav>
+        <a href="index.html">Overview</a>
+        <a href="match.html" class="active">Match Detail</a>
+      </nav>
+    </header>
+    <p class="subtitle">Pick a fixture to see every scorer's score and full reasoning.</p>
+
+    <div class="match-picker">
+      <select class="match-select" id="match-select"></select>
+    </div>
+
+    <p class="meta-line" id="meta-line"></p>
+
+    <div class="card composite-card">
+      <div class="filter-label">Weight the composite by</div>
+      <div class="pill-row" id="detail-profile-picker"></div>
+      <div class="composite-hero" id="composite-hero"></div>
+    </div>
+
+    <div class="score-cards" id="score-cards"></div>
+
+    <div class="card">
+      <h2>Score comparison</h2>
+      <div id="detail-chart" class="loading">Loading…</div>
+    </div>
+
+    <div class="card">
+      <h2>Raw scorer output</h2>
+      <pre id="raw-json" class="raw-json"></pre>
+    </div>
+  </div>
+
+  <script src="api.js"></script>
+  <script src="charts.js"></script>
+  <script src="detail.js"></script>
+</body>
+</html>

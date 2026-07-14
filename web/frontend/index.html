@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fixture Forensics: FIFA 2026</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page">
+    <header class="top">
+      <h1>⚽ Fixture Forensics: FIFA 2026</h1>
+      <nav>
+        <a href="index.html" class="active">Overview</a>
+        <a href="match.html">Match Detail</a>
+      </nav>
+    </header>
+    <p class="subtitle">
+      Fairness and fit scoring across all 72 group-stage fixtures. Every column is a
+      0&ndash;10 &ldquo;goodness&rdquo; score &mdash; higher is better.
+    </p>
+
+    <div class="card">
+      <h2>Weight the average by</h2>
+      <p class="subtitle" style="margin: -6px 0 14px">
+        Re-weights which factors count most toward Average below. Balanced = every factor equal weight.
+      </p>
+      <div class="pill-row" id="profile-picker"></div>
+    </div>
+
+    <div class="stat-row" id="stats"></div>
+
+    <div class="card">
+      <h2>Filters</h2>
+      <div class="filters">
+        <div class="filter-group">
+          <div class="filter-label">Group</div>
+          <div class="pill-row" id="group-filters"></div>
+        </div>
+        <div class="filter-group">
+          <div class="filter-label">Matchday</div>
+          <div class="pill-row" id="matchday-filters"></div>
+        </div>
+        <div class="filter-group">
+          <div class="filter-label">Search team</div>
+          <input class="search-input" id="search" placeholder="e.g. Mexico" />
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Average score by scorer</h2>
+      <div id="avg-chart" class="loading">Loading…</div>
+    </div>
+
+    <div class="card">
+      <h2>All fixtures</h2>
+      <p class="subtitle" style="margin: -6px 0 14px">Click a row to open its full detail.</p>
+      <div class="table-wrap">
+        <table class="matches" id="matches-table">
+          <thead>
+            <tr id="table-head"></tr>
+          </thead>
+          <tbody id="table-body">
+            <tr><td class="loading">Loading…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script src="api.js"></script>
+  <script src="charts.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

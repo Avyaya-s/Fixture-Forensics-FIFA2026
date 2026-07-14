@@ -10,7 +10,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import plotly.express as px
 import streamlit as st
 
-from scoring import SCORER_LABELS, build_overview
+from scoring import PROFILE_LABELS, SCORER_LABELS, build_overview
 
 st.set_page_config(page_title="Fixture Forensics -- Overview", page_icon="⚽", layout="wide")
 st.title("⚽ Fixture Forensics: FIFA 2026")
@@ -19,20 +19,32 @@ st.caption(
     "Every column is a 0-10 \"goodness\" score -- higher is better."
 )
 
-df = build_overview()
-
 with st.sidebar:
+    st.header("Lens")
+    profile_label = st.radio(
+        "Weight the average by",
+        list(PROFILE_LABELS.values()),
+        index=0,
+        help="Re-weights which factors count most toward the Average column below. "
+        "Balanced = every factor equal weight (the plain average).",
+    )
+    profile_key = next(k for k, v in PROFILE_LABELS.items() if v == profile_label)
+
     st.header("Filters")
-    groups = st.multiselect("Group", sorted(df["group"].unique()), default=sorted(df["group"].unique()))
+    df_unfiltered = build_overview(profile_key)
+    groups = st.multiselect(
+        "Group", sorted(df_unfiltered["group"].unique()), default=sorted(df_unfiltered["group"].unique())
+    )
     matchdays = st.multiselect(
-        "Matchday", sorted(df["matchday"].unique()), default=sorted(df["matchday"].unique())
+        "Matchday", sorted(df_unfiltered["matchday"].unique()), default=sorted(df_unfiltered["matchday"].unique())
     )
 
+df = df_unfiltered
 filtered = df[df["group"].isin(groups) & df["matchday"].isin(matchdays)].sort_values("match_id")
 
 col1, col2, col3 = st.columns(3)
 col1.metric("Matches shown", len(filtered))
-col2.metric("Avg score", f"{filtered['Average'].mean():.1f}" if len(filtered) else "–")
+col2.metric(f"Avg score ({profile_label})", f"{filtered['Average'].mean():.1f}" if len(filtered) else "–")
 if len(filtered) and filtered["Average"].notna().any():
     worst = filtered.loc[filtered["Average"].idxmin()]
     col3.metric("Lowest scoring fixture", worst["fixture"], f"{worst['Average']:.1f}")
@@ -56,8 +68,11 @@ event = st.dataframe(
         "matchday": "MD",
         **{
             c: st.column_config.ProgressColumn(c, min_value=0, max_value=10, format="%.1f")
-            for c in [*score_cols, "Average"]
+            for c in score_cols
         },
+        "Average": st.column_config.ProgressColumn(
+            f"Average ({profile_label})", min_value=0, max_value=10, format="%.1f"
+        ),
     },
 )
 
